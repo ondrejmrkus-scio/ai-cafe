@@ -1,6 +1,6 @@
-# Šablona: paměť pro AI ve třech souborech
+# Šablona: pracovní kontext na jednom místě
 
-Složka, kterou otevřete v Claude Code (nebo v desktop aplikaci Claude jako projekt). Má tři vrstvy:
+Složka, kterou otevřete v Claude Code (nebo v desktop aplikaci Claude jako projekt). Claude v ní ví, kam jít pro kontext, a načítá jen to, co je pro zadání potřeba. Drží to tři vrstvy:
 
 - `CLAUDE.md`: pravidla, jak se má AI chovat. Načítá se automaticky na začátku každé konverzace.
 - `MEMORY.md`: fakta, která se můžou změnit. AI ji čte na začátku a zapisuje do ní, když řeknete „zapamatuj si".

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Paměť pro AI ve třech souborech</title>
-<meta name="description" content="Jak si postavit složku, díky které si Claude pamatuje váš pracovní kontext: pravidla, fakta a zdroje. Materiály z AI café ve Scio.">
+<title>Pracovní kontext na jednom místě</title>
+<meta name="description" content="Jak si postavit složku, ve které Claude ví, kam jít pro kontext každého projektu, a načítá jen to, co je pro zadání potřeba. Materiály z AI café ve Scio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-/* Layout: one reading column, file-tree feel. Three layer colours carry through the whole page. */
+/* Layout: one reading column, file-tree feel. Layer colours (pravidla, fakta, zdroje, kód, automatizace) carry through the page. */
 :root {
   --bg: #F7F5EF;
   --surface: #FFFFFE;
@@ -22,8 +22,11 @@
   --facts-bg: #DCEEF5;
   --sources: #5B7553;
   --sources-bg: #E3EBDF;
+  --code: #6B7280;
+  --auto: #7B5EA7;
   --dark: #1B2A41;
   --dark-fg: #F7F5EF;
+  --dark-muted: #BFD0E0;
   --font-body: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
   color-scheme: light;
@@ -32,35 +35,40 @@
   :root:not([data-theme="light"]) {
     --bg: #141C2B; --surface: #1B2538; --fg: #EEF0F3; --muted: #A9B3C0; --line: #2E3A50;
     --rules: #F0A05A; --rules-bg: #3A2A1C; --facts: #6FB9D8; --facts-bg: #1C3340; --sources: #94B58C; --sources-bg: #223126;
-    --dark: #0E1420; --dark-fg: #EEF0F3; color-scheme: dark;
+    --code: #9AA3AF; --auto: #B49BD8; --dark: #0E1420; --dark-fg: #EEF0F3; --dark-muted: #A9B3C0; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #141C2B; --surface: #1B2538; --fg: #EEF0F3; --muted: #A9B3C0; --line: #2E3A50;
   --rules: #F0A05A; --rules-bg: #3A2A1C; --facts: #6FB9D8; --facts-bg: #1C3340; --sources: #94B58C; --sources-bg: #223126;
-  --dark: #0E1420; --dark-fg: #EEF0F3; color-scheme: dark;
+  --code: #9AA3AF; --auto: #B49BD8; --dark: #0E1420; --dark-fg: #EEF0F3; --dark-muted: #A9B3C0; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
 body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
-.wrap { max-width: 760px; margin: 0 auto; padding-block: 48px 80px; padding-inline: 20px; }
+.wrap { max-width: 800px; margin: 0 auto; padding-block: 48px 80px; padding-inline: 20px; }
 header { display: flex; flex-direction: column; gap: 20px; margin-bottom: 56px; }
 .eyebrow { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rules); margin: 0; }
 h1 { font-size: clamp(34px, 6vw, 52px); line-height: 1.08; font-weight: 600; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
-.lede { font-size: 21px; font-weight: 300; color: var(--muted); margin: 0; max-width: 60ch; }
+.lede { font-size: 21px; font-weight: 300; color: var(--muted); margin: 0; max-width: 62ch; }
 .lede b { font-weight: 500; color: var(--fg); }
 h2 { font-size: 26px; font-weight: 600; margin: 0 0 20px; line-height: 1.2; text-wrap: balance; }
 h3 { font-size: 18px; font-weight: 600; margin: 0; }
 p { margin: 0; }
 section { margin-bottom: 56px; }
 section + section { border-top: 1px solid var(--line); padding-top: 48px; }
-.layers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.layer { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.layer code { font-family: var(--font-mono); font-size: 15px; font-weight: 600; }
-.layer.rules code { color: var(--rules); } .layer.facts code { color: var(--facts); } .layer.sources code { color: var(--sources); }
-.layer p { color: var(--muted); font-size: 16px; }
-.layer .tag { font-size: 14px; color: var(--fg); padding: 8px 12px; border-radius: 8px; margin-top: 4px; }
-.layer.rules .tag { background: var(--rules-bg); } .layer.facts .tag { background: var(--facts-bg); } .layer.sources .tag { background: var(--sources-bg); }
+.intro { color: var(--muted); max-width: 66ch; margin-bottom: 24px; }
+.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card code { font-family: var(--font-mono); font-size: 15px; font-weight: 600; }
+.card.rules code { color: var(--rules); } .card.facts code { color: var(--facts); } .card.sources code { color: var(--sources); }
+.card p { color: var(--muted); font-size: 16px; }
+.card .tag { font-size: 14px; color: var(--fg); padding: 8px 12px; border-radius: 8px; margin-top: 4px; }
+.card.rules .tag { background: var(--rules-bg); } .card.facts .tag { background: var(--facts-bg); } .card.sources .tag { background: var(--sources-bg); }
+.ideas { display: grid; gap: 14px; }
+.idea { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; display: grid; gap: 6px; min-width: 0; }
+.idea p { color: var(--muted); }
+.idea .ex { font-size: 15px; color: var(--fg); background: var(--bg); border-left: 3px solid var(--rules); padding: 8px 12px; border-radius: 0 8px 8px 0; margin-top: 4px; }
 .tests { margin-top: 24px; display: grid; gap: 10px; }
 .test { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px dashed var(--line); }
 .test:last-child { border-bottom: 0; }
@@ -72,8 +80,6 @@ ol.steps li::before { counter-increment: step; content: counter(step); position:
 ol.steps li:nth-child(2)::before { color: var(--facts); } ol.steps li:nth-child(3)::before { color: var(--sources); }
 ol.steps li p { color: var(--muted); margin-top: 4px; }
 .steps-after { margin-top: 18px; color: var(--muted); }
-pre { background: var(--dark); color: var(--dark-fg); font-family: var(--font-mono); font-size: 14px; line-height: 1.6; padding: 18px 20px; border-radius: 12px; overflow-x: auto; margin: 0; }
-pre .c { color: #9FB0C6; }
 .downloads { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .dl { display: flex; flex-direction: column; gap: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; text-decoration: none; color: inherit; min-width: 0; }
 .dl:hover, .dl:focus-visible { border-color: var(--fg); outline: none; }
@@ -84,15 +90,22 @@ a { color: var(--facts); text-underline-offset: 3px; }
 a:focus-visible { outline: 2px solid var(--facts); outline-offset: 2px; border-radius: 4px; }
 ul.plain { padding-left: 20px; margin: 0; display: grid; gap: 10px; }
 ul.plain li b { font-weight: 600; }
-.tree { display: grid; gap: 4px; font-family: var(--font-mono); font-size: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; overflow-x: auto; }
-.tree div { display: flex; gap: 14px; white-space: nowrap; }
+.tree-wrap { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.tree { display: grid; gap: 5px; font-family: var(--font-mono); font-size: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; overflow-x: auto; }
+.tree div { display: flex; gap: 14px; white-space: nowrap; align-items: baseline; }
 .tree .d1 { padding-left: 1.6em; } .tree .d2 { padding-left: 3.2em; }
-.tree .n { font-weight: 600; } .tree .r { color: var(--rules); } .tree .f { color: var(--facts); } .tree .s { color: var(--sources); }
+.tree .n { font-weight: 600; } .tree .r { color: var(--rules); } .tree .f { color: var(--facts); } .tree .s { color: var(--sources); } .tree .c { color: var(--code); } .tree .a { color: var(--auto); }
 .tree .k { font-family: var(--font-body); color: var(--muted); font-size: 14px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: var(--muted); }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+.legend .r::before { background: var(--rules); } .legend .f::before { background: var(--facts); } .legend .s::before { background: var(--sources); } .legend .c::before { background: var(--code); } .legend .a::before { background: var(--auto); }
+.points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+.point { background: var(--dark); color: var(--dark-fg); border-radius: 14px; padding: 18px 20px; font-size: 15px; line-height: 1.5; min-width: 0; }
+.point b { display: block; font-size: 16px; margin-bottom: 4px; }
+.point span { color: var(--dark-muted); }
 footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--muted); font-size: 15px; display: flex; flex-wrap: wrap; gap: 8px 24px; }
-@media (max-width: 640px) {
-  .layers { grid-template-columns: 1fr; }
-  .downloads { grid-template-columns: 1fr; }
+@media (max-width: 680px) {
+  .three, .points, .downloads { grid-template-columns: 1fr; }
   .test { grid-template-columns: 1fr; gap: 4px; }
   body { font-size: 17px; }
 }
@@ -104,36 +117,87 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
 
 <header>
   <p class="eyebrow">AI café · Scio · 12. 10. 2026</p>
-  <h1>Paměť pro AI ve třech souborech</h1>
-  <p class="lede">AI si z konverzace na konverzaci nepamatuje nic. <b>Stačí tři soubory ve složce</b>, kterou otevřete v Claude Code, a pamatuje si všechno, co potřebujete: kdo je kdo, co jste rozhodli a jak chcete, aby s vámi mluvila.</p>
+  <h1>Pracovní kontext na jednom místě</h1>
+  <p class="lede">Claude si pamatovat umí. Co mu chybí, je pořádek: kde je pravda o kterém projektu, co platí vždycky a co se minulý týden změnilo. <b>Scio OS je jedna složka, kde to všechno je, a pár pravidel, která říkají, co se kdy načte.</b> Do práce na rozvrhu se nenačítá spisovka. Do textu pro kolegu se načte můj tón.</p>
 </header>
 
+<section id="proc">
+  <h2>O co jde</h2>
+  <div class="ideas">
+    <div class="idea">
+      <h3>Všechno na jednom místě</h3>
+      <p>Projekty, které sdílí lidi a rozhodnutí, bydlí v jedné složce jako podsložky. Kontext se neopisuje z projektu do projektu, sdílí se.</p>
+      <p class="ex">SIS a Spisovka mají stejného product ownera, stejný tech stack a stejné důvody, proč se v létě otočilo pořadí priorit. To je napsané jednou, nahoře.</p>
+    </div>
+    <div class="idea">
+      <h3>Ví, kam jít</h3>
+      <p>Na začátku se načtou pravidla a paměť. Pravidla obsahují mapu: tabulku „čti, když…", která říká, ve kterém dokumentu je pravda o čem. Zdroje se otevírají, až když jsou na zadání potřeba.</p>
+      <p class="ex">Otázka na rozsah MVP vede do specu v repu, ne do paměti. Zjištění ze škol vedou do syntézy rozhovorů, ne do přepisů.</p>
+    </div>
+    <div class="idea">
+      <h3>Načte jen to, co je pro zadání relevantní</h3>
+      <p>Pravidla jsou ve vrstvách: sdílená pro celou složku, užší pro projekt. Načítají se obě, projekt vyhrává, kde si odporují. Co nepatří k zadání, zůstává stranou, i když je to ve složce.</p>
+      <p class="ex">Doslovné přepisy rozhovorů jsou schválně stranou: otevřou se jen na výslovnou žádost, jinak se pracuje ze syntézy.</p>
+    </div>
+  </div>
+</section>
+
 <section id="vrstvy">
-  <h2>Tři vrstvy</h2>
-  <div class="layers">
-    <div class="layer rules">
+  <h2>Jak to drží pohromadě: tři vrstvy</h2>
+  <p class="intro">Všechno, co má Claude vědět, spadá do jedné ze tří vrstev. Každá má svůj soubor a své pravidlo, kdy se čte.</p>
+  <div class="three">
+    <div class="card rules">
       <code>CLAUDE.md</code>
       <h3>Pravidla</h3>
-      <p>Kdo jste, jazyk, tón, co dělat vždy a co nikdy. Načítá se samo na začátku každé konverzace.</p>
+      <p>Kdo jste, jazyk, tón, co dělat vždy a co nikdy, a mapa zdrojů. Načítá se samo na začátku každé konverzace.</p>
       <span class="tag">„vždy", „nikdy", „před X udělej Y"</span>
     </div>
-    <div class="layer facts">
+    <div class="card facts">
       <code>MEMORY.md</code>
       <h3>Fakta</h3>
-      <p>Lidé, stav projektů, rozhodnutí a proč padla. AI ji čte na začátku a zapisuje do ní, když řeknete „zapamatuj si".</p>
+      <p>Lidé, stav projektů, rozhodnutí a proč padla. Čte se na začátku, zapisuje se na „zapamatuj si".</p>
       <span class="tag">fakt, který se může změnit</span>
     </div>
-    <div class="layer sources">
+    <div class="card sources">
       <code>00_Resources/</code>
       <h3>Zdroje</h3>
-      <p>Dokumenty, do kterých se jde, až když jsou potřeba. V pravidlech je tabulka „čti, když…".</p>
+      <p>Dokumenty, do kterých se jde, až když jsou potřeba. Které a kdy říká tabulka v pravidlech.</p>
       <span class="tag">všechno ostatní</span>
     </div>
   </div>
   <div class="tests">
     <div class="test"><span>Předepisuje to chování?</span><span class="answer rules">→ CLAUDE.md</span></div>
     <div class="test"><span>Je to fakt o světě, který se může změnit?</span><span class="answer facts">→ MEMORY.md</span></div>
-    <div class="test"><span>Je to dokument, ke kterému se vracíte?</span><span class="answer sources">→ 00_Resources/</span></div>
+    <div class="test"><span>Je to dokument, ke kterému se vracíte?</span><span class="answer sources">→ 00_Resources/ a řádek v tabulce</span></div>
+  </div>
+</section>
+
+<section id="strom">
+  <h2>Jak to vypadá u mě: Scio OS</h2>
+  <p class="intro">Skutečný strom, ne schéma. Trojice pravidla, fakta, zdroje je nahoře pro celou složku a znovu v každém projektu. Repo je zdroj pravdy o kódu a specu, paměť ho nekopíruje. Fialová část přibyla jako poslední.</p>
+  <div class="tree-wrap">
+    <div class="legend"><span class="r">pravidla</span><span class="f">fakta</span><span class="s">zdroje</span><span class="c">kód</span><span class="a">automatizace</span></div>
+    <div class="tree" aria-label="Strom složky Scio OS">
+      <div><span class="n">Scio OS/</span><span class="k">jedna složka, Obsidian + Claude Code, v gitu</span></div>
+      <div class="d1"><span class="n r">CLAUDE.md</span><span class="k">pravidla pro celou složku, 90 řádků</span></div>
+      <div class="d1"><span class="n f">MEMORY.md</span><span class="k">lidé a rozhodnutí, 10 řádků</span></div>
+      <div class="d1"><span class="n s">00_Resources/</span><span class="k">voice-principles.md, skripty</span></div>
+      <div class="d1"><span class="n">SIS/</span><span class="k">projekt: školní informační systém</span></div>
+      <div class="d2"><span class="n r">CLAUDE.md</span><span class="k">pravidla jen pro SIS: pojmy, workflow, ověření UI, co nečíst</span></div>
+      <div class="d2"><span class="n f">MEMORY.md</span><span class="k">proč rozhodnutí padla, co jsme zamítli</span></div>
+      <div class="d2"><span class="n s">SIS Resources/</span><span class="k">discovery, prototyp, rozvrhy, texty PR</span></div>
+      <div class="d1"><span class="n">Spisovka/</span><span class="k">projekt: stejná trojice, pozastavený</span></div>
+      <div class="d1"><span class="n c">_repo/</span><span class="k">klon týmového repa: kód a spec, zdroj pravdy</span></div>
+      <div class="d1"><span class="n a">.claude/</span><span class="k">automatizace</span></div>
+      <div class="d2"><span class="n a">agents/</span><span class="k">8 rolí: průzkumník, plánovač, implementer, tester, recenzenti</span></div>
+      <div class="d2"><span class="n a">workflows/</span><span class="k">sis-plan, sis-build: pipeline od zadání k pull requestu</span></div>
+      <div class="d2"><span class="n a">skills/</span><span class="k">/ship: kontroly, commit, PR</span></div>
+    </div>
+  </div>
+  <div class="points">
+    <div class="point"><b>Projekty dědí.</b><span>Načítají se obě úrovně, sdílená první. Projekt zužuje, kde mlčí, platí sdílené.</span></div>
+    <div class="point"><b>Paměť neduplikuje.</b><span>Spec je v repu, syntéza ve zdrojích. Paměť drží jen proč rozhodnutí padlo.</span></div>
+    <div class="point"><b>Automatizace až nakonec.</b><span>Agenti a pipeline vznikly, až když základ nějakou dobu žil a bylo vidět, co se opakuje.</span></div>
   </div>
 </section>
 
@@ -142,9 +206,9 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
   <ol class="steps">
     <li><h3>Složka a pět řádků pravidel</h3><p>Založte složku a v ní <code>CLAUDE.md</code>: kdo jste, jazyk, tón, dvě věci, které nechcete. Víc ne. Pravidla přibývají s prací, ne předem.</p></li>
     <li><h3>Prázdná paměť a jedno pravidlo k ní</h3><p><code>MEMORY.md</code> s nadpisy Lidé, Stav projektů, Rozhodnutí. Do pravidel přidejte: „Na začátku si přečti MEMORY.md. Když řeknu zapamatuj si, zapiš to tam hned."</p></li>
-    <li><h3>Tři dokumenty, ke kterým se vracíte</h3><p>Do složky <code>00_Resources/</code> a do tabulky v pravidlech s poznámkou, kdy je číst.</p></li>
+    <li><h3>Tři dokumenty, ke kterým se vracíte, a mapa k nim</h3><p>Do složky <code>00_Resources/</code> a do tabulky v pravidlech s poznámkou, kdy který číst. Tahle tabulka je to, díky čemu Claude ví, kam jít.</p></li>
   </ol>
-  <p class="steps-after">Pak to vyzkoušejte. Zeptejte se na něco, co je v paměti. Řekněte „zapamatuj si, že…" a podívejte se do souboru.</p>
+  <p class="steps-after">Pak to vyzkoušejte. Zeptejte se na něco, co je v paměti. Řekněte „zapamatuj si, že…" a podívejte se do souboru. Až přibude druhý projekt, dejte mu podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>.</p>
 </section>
 
 <section id="sablona">
@@ -161,30 +225,23 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
       <span class="url">github.com/ondrejmrkus-scio/ai-cafe</span>
     </a>
   </div>
-  <div class="tree" style="margin-top:16px" aria-label="Struktura šablony">
-    <div><span class="n">sablona-vaultu/</span></div>
-    <div class="d1"><span class="n r">CLAUDE.md</span><span class="k">pravidla, vyplníte hranaté závorky</span></div>
-    <div class="d1"><span class="n f">MEMORY.md</span><span class="k">paměť s nadpisy, zatím prázdná</span></div>
-    <div class="d1"><span class="n s">00_Resources/</span><span class="k">voice-principles.md, jak píšete</span></div>
-    <div class="d1"><span class="n">Projekt-ukazka/</span><span class="k">podsložka projektu s vlastními pravidly a pamětí</span></div>
-    <div class="d1"><span class="n">README.md</span><span class="k">postup na první hodinu</span></div>
-  </div>
 </section>
 
 <section id="dal">
   <h2>Až to poroste</h2>
   <ul class="plain">
     <li><b>Víc projektů v jedné složce.</b> Když projekty sdílí lidi a kontext, každý dostane podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>. Načítají se obě úrovně, nadřazená první. Projekt pravidla zužuje, kde mlčí, platí sdílená.</li>
+    <li><b>Řekněte, co nečíst.</b> Stejně důležité jako mapa zdrojů je pravidlo, co zůstává stranou: přepisy, staré verze, cizí rozpracovaná práce. Jinak se do každé konverzace načte všechno.</li>
     <li><b>Paměť neduplikuje zdroje.</b> Když je pravda v dokumentu nebo v repu, paměť drží jen odkaz a důvod, proč rozhodnutí padlo. Jinak se za měsíc rozejdou.</li>
-    <li><b>Verzujte to gitem.</b> Paměť se dá vrátit, když AI zapíše něco špatně, a vidíte, co se kdy změnilo.</li>
-    <li><b>Osobní věci zvlášť.</b> Pracovní složka je pro práci. Soukromé věci patří do jiné složky, ke které pracovní AI nemá přístup.</li>
+    <li><b>Verzujte to gitem.</b> Paměť se dá vrátit, když Claude zapíše něco špatně, a vidíte, co se kdy změnilo.</li>
+    <li><b>Osobní věci zvlášť.</b> Pracovní složka je pro práci. Soukromé věci patří do jiné složky, ke které pracovní Claude nemá přístup.</li>
     <li><b>Automatizace až nakonec.</b> Agenti, skills a workflows dávají smysl, až když základ nějakou dobu žije a víte, co se opakuje.</li>
   </ul>
 </section>
 
 <section id="bez-claude-code">
   <h2>Bez Claude Code</h2>
-  <p>V claude.ai založte Projekt. Do instrukcí projektu vložte obsah <code>CLAUDE.md</code>, do znalostí projektu nahrajte <code>MEMORY.md</code> a dokumenty ze zdrojů. Paměť se v téhle variantě neaktualizuje sama: když padne něco k zapamatování, soubor přepište a nahrajte znovu.</p>
+  <p>V claude.ai založte Projekt. Do instrukcí projektu vložte obsah <code>CLAUDE.md</code>, do znalostí projektu nahrajte <code>MEMORY.md</code> a dokumenty ze zdrojů. Paměť se v téhle variantě neaktualizuje sama: když padne něco k zapamatování, soubor přepište a nahrajte znovu. Vrstvení podle projektů tu nahradí víc Projektů se společnou částí instrukcí.</p>
 </section>
 
 <section id="dal-cist">
