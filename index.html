@@ -65,10 +65,6 @@ section + section { border-top: 1px solid var(--line); padding-top: 48px; }
 .card p { color: var(--muted); font-size: 16px; }
 .card .tag { font-size: 14px; color: var(--fg); padding: 8px 12px; border-radius: 8px; margin-top: 4px; }
 .card.rules .tag { background: var(--rules-bg); } .card.facts .tag { background: var(--facts-bg); } .card.sources .tag { background: var(--sources-bg); }
-.ideas { display: grid; gap: 14px; }
-.idea { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; display: grid; gap: 6px; min-width: 0; }
-.idea p { color: var(--muted); }
-.idea .ex { font-size: 15px; color: var(--fg); background: var(--bg); border-left: 3px solid var(--rules); padding: 8px 12px; border-radius: 0 8px 8px 0; margin-top: 4px; }
 .tests { margin-top: 24px; display: grid; gap: 10px; }
 .test { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px dashed var(--line); }
 .test:last-child { border-bottom: 0; }
@@ -118,77 +114,76 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
 <header>
   <p class="eyebrow">AI café · Scio · 12. 10. 2026</p>
   <h1>Scio OS: Tvůj pracovní kontext na jednom místě</h1>
-  <p class="lede">Pamatovat si Claude umí. Horší je to s pořádkem: pravda o projektu je rozházená po dokumentech, chatech a hlavách a v každé nové konverzaci se skládá znovu. <b>Scio OS je jedna složka, kde to všechno bydlí, a pár pravidel, která říkají, co se k jakému zadání načte a co zůstane stranou.</b> Na rozvrh se nenačítá spisovka. Do zprávy pro kolegu se načte můj tón.</p>
+  <p class="lede">Pamatovat si Claude umí. Horší je to s pořádkem: to, co o projektu platí, je rozházené po dokumentech, chatech a hlavách a v každé nové konverzaci se skládá znovu. <b>Scio OS je jedna složka, kde to všechno je, a pár pravidel o tom, co se k jakému zadání načte a co zůstane stranou.</b></p>
 </header>
 
-
 <section id="vrstvy">
-  <h2>Jak to drží pohromadě: tři vrstvy</h2>
-  <p class="intro">Všechno, co má Claude vědět, spadá do jedné ze tří vrstev. Každá má svůj soubor a své pravidlo, kdy se čte.</p>
+  <h2>Tři vrstvy</h2>
+  <p class="intro">Všechno, co má Claude vědět, patří do jedné ze tří vrstev. Každá má svůj soubor a jasně dané, kdy se čte.</p>
   <div class="three">
     <div class="card rules">
       <code>CLAUDE.md</code>
       <h3>Pravidla</h3>
-      <p>Kdo jsi, jazyk, tón, co dělat vždy a co nikdy, a mapa zdrojů. Načítá se samo na začátku každé konverzace.</p>
+      <p>Kdo jsi, jakým jazykem a tónem chceš psát, co dělat vždy a co nikdy. A mapa zdrojů: který dokument číst a kdy. Načítá se automaticky na začátku každé konverzace.</p>
       <span class="tag">„vždy", „nikdy", „před X udělej Y"</span>
     </div>
     <div class="card facts">
       <code>MEMORY.md</code>
       <h3>Fakta</h3>
-      <p>Lidé, stav projektů, rozhodnutí a proč padla. Čte se na začátku, zapisuje se na „zapamatuj si".</p>
+      <p>Lidé, stav projektů, rozhodnutí a proč padla. Claude ji přečte na začátku konverzace a zapíše do ní, když řekneš „zapamatuj si".</p>
       <span class="tag">fakt, který se může změnit</span>
     </div>
     <div class="card sources">
       <code>00_Resources/</code>
       <h3>Zdroje</h3>
-      <p>Dokumenty, do kterých se jde, až když jsou potřeba. Které a kdy říká tabulka v pravidlech.</p>
+      <p>Dokumenty, které Claude otevře, až když je potřebuje. Který a kdy, to říká tabulka v pravidlech.</p>
       <span class="tag">všechno ostatní</span>
     </div>
   </div>
   <div class="tests">
     <div class="test"><span>Předepisuje to chování?</span><span class="answer rules">→ CLAUDE.md</span></div>
-    <div class="test"><span>Je to fakt o světě, který se může změnit?</span><span class="answer facts">→ MEMORY.md</span></div>
+    <div class="test"><span>Je to fakt, který se může změnit?</span><span class="answer facts">→ MEMORY.md</span></div>
     <div class="test"><span>Je to dokument, ke kterému se vracíš?</span><span class="answer sources">→ 00_Resources/ a řádek v tabulce</span></div>
   </div>
 </section>
 
 <section id="strom">
   <h2>Jak to vypadá u mě: Scio OS</h2>
-  <p class="intro">Skutečný strom, ne schéma. Trojice pravidla, fakta, zdroje je nahoře pro celou složku a znovu v každém projektu. Repo je zdroj pravdy o kódu a specu, paměť ho nekopíruje. Fialová část přibyla jako poslední.</p>
+  <p class="intro">Tohle je skutečná složka, ne schéma. Trojice pravidla, fakta a zdroje je jednou nahoře pro celou složku a pak znovu v každém projektu. Kód a specifikace jsou v klonu týmového repa. To je zdroj pravdy a paměť ho neopisuje. Fialová část přibyla jako poslední.</p>
   <div class="tree-wrap">
     <div class="legend"><span class="r">pravidla</span><span class="f">fakta</span><span class="s">zdroje</span><span class="c">kód</span><span class="a">automatizace</span></div>
     <div class="tree" aria-label="Strom složky Scio OS">
-      <div><span class="n">Scio OS/</span><span class="k">jedna složka, Obsidian + Claude Code, v gitu</span></div>
+      <div><span class="n">Scio OS/</span><span class="k">jedna složka, otevřená v Obsidianu i v Claude Code, verzovaná gitem</span></div>
       <div class="d1"><span class="n r">CLAUDE.md</span><span class="k">pravidla pro celou složku, 90 řádků</span></div>
       <div class="d1"><span class="n f">MEMORY.md</span><span class="k">lidé a rozhodnutí, 10 řádků</span></div>
       <div class="d1"><span class="n s">00_Resources/</span><span class="k">voice-principles.md, skripty</span></div>
       <div class="d1"><span class="n">SIS/</span><span class="k">projekt: školní informační systém</span></div>
-      <div class="d2"><span class="n r">CLAUDE.md</span><span class="k">pravidla jen pro SIS: pojmy, workflow, ověření UI, co nečíst</span></div>
-      <div class="d2"><span class="n f">MEMORY.md</span><span class="k">proč rozhodnutí padla, co jsme zamítli</span></div>
+      <div class="d2"><span class="n r">CLAUDE.md</span><span class="k">pravidla jen pro SIS: pojmy, postup práce, ověření UI, co nečíst</span></div>
+      <div class="d2"><span class="n f">MEMORY.md</span><span class="k">proč rozhodnutí padla a co jsme zamítli</span></div>
       <div class="d2"><span class="n s">SIS Resources/</span><span class="k">discovery, prototyp, rozvrhy, texty PR</span></div>
-      <div class="d1"><span class="n">Spisovka/</span><span class="k">projekt: stejná trojice, pozastavený</span></div>
-      <div class="d1"><span class="n c">_repo/</span><span class="k">klon týmového repa: kód a spec, zdroj pravdy</span></div>
+      <div class="d1"><span class="n">Spisovka/</span><span class="k">projekt: stejná trojice souborů, teď pozastavený</span></div>
+      <div class="d1"><span class="n c">_repo/</span><span class="k">klon týmového repa: kód a specifikace, zdroj pravdy</span></div>
       <div class="d1"><span class="n a">.claude/</span><span class="k">automatizace</span></div>
       <div class="d2"><span class="n a">agents/</span><span class="k">8 rolí: průzkumník, plánovač, implementer, tester, recenzenti</span></div>
-      <div class="d2"><span class="n a">workflows/</span><span class="k">sis-plan, sis-build: pipeline od zadání k pull requestu</span></div>
-      <div class="d2"><span class="n a">skills/</span><span class="k">/ship: kontroly, commit, PR</span></div>
+      <div class="d2"><span class="n a">workflows/</span><span class="k">sis-plan a sis-build: pipeline od zadání k pull requestu</span></div>
+      <div class="d2"><span class="n a">skills/</span><span class="k">/ship: kontroly, commit a otevření PR</span></div>
     </div>
   </div>
   <div class="points">
-    <div class="point"><b>Projekty dědí.</b><span>Načítají se obě úrovně, sdílená první. Projekt zužuje, kde mlčí, platí sdílené.</span></div>
-    <div class="point"><b>Paměť neduplikuje.</b><span>Spec je v repu, syntéza ve zdrojích. Paměť drží jen proč rozhodnutí padlo.</span></div>
-    <div class="point"><b>Automatizace až nakonec.</b><span>Agenti a pipeline vznikly, až když základ nějakou dobu žil a bylo vidět, co se opakuje.</span></div>
+    <div class="point"><b>Projekty dědí.</b><span>Načítají se obě úrovně pravidel, sdílená první. Projektová pravidla upřesňují sdílená. Kde projekt nic neříká, platí sdílené.</span></div>
+    <div class="point"><b>Paměť nic neopisuje.</b><span>Specifikace je v repu, zjištění ze škol v syntéze rozhovorů. Paměť drží jen to, proč rozhodnutí padlo.</span></div>
+    <div class="point"><b>Automatizace až nakonec.</b><span>Agenti a pipeline přibyli, až když základ nějakou dobu fungoval a bylo jasné, co se opakuje.</span></div>
   </div>
 </section>
 
 <section id="kroky">
   <h2>Tři kroky na dnešní odpoledne</h2>
   <ol class="steps">
-    <li><h3>Složka a pět řádků pravidel</h3><p>Založ složku a v ní <code>CLAUDE.md</code>: kdo jsi, jazyk, tón, dvě věci, které nechceš. Víc ne. Pravidla přibývají s prací, ne předem.</p></li>
-    <li><h3>Prázdná paměť a jedno pravidlo k ní</h3><p><code>MEMORY.md</code> s nadpisy Lidé, Stav projektů, Rozhodnutí. Do pravidel přidej: „Na začátku si přečti MEMORY.md. Když řeknu zapamatuj si, zapiš to tam hned."</p></li>
-    <li><h3>Tři dokumenty, ke kterým se vracíš, a mapa k nim</h3><p>Do složky <code>00_Resources/</code> a do tabulky v pravidlech s poznámkou, kdy který číst. Tahle tabulka je to, díky čemu Claude ví, kam jít.</p></li>
+    <li><h3>Složka a pět řádků pravidel</h3><p>Založ složku a v ní soubor <code>CLAUDE.md</code>. Napiš do něj, kdo jsi, jakým jazykem a tónem chceš psát a dvě věci, které nechceš. Víc ne. Další pravidla přidávej, až když ti budou chybět.</p></li>
+    <li><h3>Prázdná paměť a jedno pravidlo k ní</h3><p>Vytvoř <code>MEMORY.md</code> s nadpisy Lidé, Stav projektů a Rozhodnutí. Do <code>CLAUDE.md</code> přidej pravidlo: „Na začátku si přečti MEMORY.md. Když řeknu zapamatuj si, zapiš to tam hned."</p></li>
+    <li><h3>Tři dokumenty, ke kterým se vracíš, a mapa k nim</h3><p>Dej je do složky <code>00_Resources/</code> a do <code>CLAUDE.md</code> přidej tabulku: který dokument a kdy ho číst. Díky téhle tabulce Claude ví, kam jít.</p></li>
   </ol>
-  <p class="steps-after">Pak to vyzkoušej. Zeptej se na něco, co je v paměti. Řekni „zapamatuj si, že…" a podívej se do souboru. Až přibude druhý projekt, dej mu podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>.</p>
+  <p class="steps-after">Pak to vyzkoušej: zeptej se na něco, co je v paměti, řekni „zapamatuj si, že…" a podívej se, co se do souboru zapsalo. Až přibude druhý projekt, dej mu podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>.</p>
 </section>
 
 <section id="sablona">
@@ -196,12 +191,12 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
   <div class="downloads">
     <a class="dl" href="sablona-vaultu.zip">
       <span class="what">Šablona složky (zip)</span>
-      <span class="how">Všechny tři soubory s ukázkami k vyplnění, ukázková podsložka projektu a návod v README.</span>
+      <span class="how">Všechny tři soubory s předvyplněnými ukázkami, ukázková podsložka projektu a návod v README.</span>
       <span class="url">sablona-vaultu.zip</span>
     </a>
     <a class="dl" href="https://github.com/ondrejmrkus-scio/ai-cafe/tree/main/sablona-vaultu">
       <span class="what">Prohlédnout soubory na GitHubu</span>
-      <span class="how">Když chceš nejdřív vidět, co v šabloně je, bez stahování.</span>
+      <span class="how">Když se chceš nejdřív podívat, co v šabloně je, bez stahování.</span>
       <span class="url">github.com/ondrejmrkus-scio/ai-cafe</span>
     </a>
   </div>
@@ -210,15 +205,14 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
 <section id="dal">
   <h2>Až to poroste</h2>
   <ul class="plain">
-    <li><b>Víc projektů v jedné složce.</b> Když projekty sdílí lidi a kontext, každý dostane podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>. Načítají se obě úrovně, nadřazená první. Projekt pravidla zužuje, kde mlčí, platí sdílená.</li>
-    <li><b>Řekni, co nečíst.</b> Stejně důležité jako mapa zdrojů je pravidlo, co zůstává stranou: přepisy, staré verze, cizí rozpracovaná práce. Jinak se do každé konverzace načte všechno.</li>
-    <li><b>Paměť neduplikuje zdroje.</b> Když je pravda v dokumentu nebo v repu, paměť drží jen odkaz a důvod, proč rozhodnutí padlo. Jinak se za měsíc rozejdou.</li>
-    <li><b>Verzuj to gitem.</b> Paměť se dá vrátit, když Claude zapíše něco špatně, a vidíte, co se kdy změnilo.</li>
-    <li><b>Osobní věci zvlášť.</b> Pracovní složka je pro práci. Soukromé věci patří do jiné složky, ke které pracovní Claude nemá přístup.</li>
-    <li><b>Automatizace až nakonec.</b> Agenti, skills a workflows dávají smysl, až když základ nějakou dobu žije a víš, co se opakuje.</li>
+    <li><b>Víc projektů v jedné složce.</b> Když projekty sdílí lidi a kontext, dej každému podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>. Načítají se obě úrovně, nadřazená první. Projektová pravidla upřesňují sdílená. Kde projekt nic neříká, platí sdílené.</li>
+    <li><b>Řekni, co nečíst.</b> Stejně důležité jako mapa zdrojů je pravidlo, co má zůstat stranou: doslovné přepisy, staré verze, rozpracovaná práce někoho jiného. Jinak se do každé konverzace tahá všechno.</li>
+    <li><b>Paměť neopisuje zdroje.</b> Když je pravda v dokumentu nebo v repu, paměť drží jen odkaz na něj a důvod, proč rozhodnutí padlo. Jinak se obě verze za měsíc rozejdou.</li>
+    <li><b>Verzuj to gitem.</b> Když Claude zapíše něco špatně, paměť se dá vrátit. A vidíš, co se kdy změnilo.</li>
+    <li><b>Osobní věci drž zvlášť.</b> Pracovní složka je jen na práci. Soukromé věci patří do jiné složky, ke které Claude z pracovní složky nemá přístup.</li>
+    <li><b>Automatizace až nakonec.</b> Agenti, skills a workflows dávají smysl, až když základ nějakou dobu používáš a víš, co se opakuje.</li>
   </ul>
 </section>
-
 
 <section id="dal-cist">
   <h2>Kde číst dál</h2>

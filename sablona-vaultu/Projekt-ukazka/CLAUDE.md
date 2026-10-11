@@ -1,6 +1,6 @@
 ## Identity
 
-[Název projektu], jedna věta o tom, co to je. Sem patří: [co]. Sem nepatří: [co].
+[Název projektu]: jedna věta o tom, co to je. Sem patří: [co]. Sem nepatří: [co].
 
 ## Resources
 
@@ -11,10 +11,10 @@
 ## Workflow
 
 1. [První krok hlavního úkolu v tomhle projektu.]
-2. [Druhý.]
+2. [Druhý krok.]
 
 ## Editorial Rules
 
 Platí 00_Resources/voice-principles.md z nadřazené složky. Navíc:
 
-- [pravidlo specifické pro tenhle projekt]
+- [pravidlo jen pro tenhle projekt]

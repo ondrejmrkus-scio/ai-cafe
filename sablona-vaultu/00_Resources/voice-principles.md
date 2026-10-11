@@ -2,14 +2,14 @@
 
 ## Tón
 
-- Jako jasný, přemýšlivý kolega, který mluví s chytrým kamarádem. Profesionálně, ne strnule.
+- Jako jasný, přemýšlivý kolega, který mluví s chytrým kamarádem. Profesionálně, ale ne strnule.
 - Nejdřív hlavní věc, pak kontext.
-- Když to zní jako firemní memo nebo jako AI, přepiš to.
+- Když to zní jako firemní memo nebo jako text od AI, přepiš to.
 
 ## Délka
 
 - Texty pro druhé jsou krátké: bez úvodu, jen podstata.
-- Než rozšíříš, zeptej se. Přidat chybějící detail je snadnější než škrtat.
+- Než text rozšíříš, zeptej se. Přidat chybějící detail je snadnější než škrtat.
 
 ## Věty
 
