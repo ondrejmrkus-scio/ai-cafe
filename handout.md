@@ -1,12 +1,6 @@
 # Scio OS: Tvůj pracovní kontext na jednom místě
 
-Claude si pamatovat umí. Co mu chybí, je pořádek: kde je pravda o kterém projektu, co platí vždycky a co se minulý týden změnilo. Řešení je jedna složka, kde to všechno je, a pár pravidel, která říkají, co se kdy načte. Do práce na rozvrhu se nenačítá spisovka. Do textu pro kolegu se načte váš tón.
-
-## O co jde
-
-- **Všechno na jednom místě.** Projekty, které sdílí lidi a rozhodnutí, bydlí v jedné složce jako podsložky. Kontext se neopisuje, sdílí se.
-- **Ví, kam jít.** Na začátku se načtou pravidla a paměť. V pravidlech je mapa „čti, když…", která říká, kde je pravda o čem. Zdroje se otevírají, až když jsou na zadání potřeba.
-- **Načte jen to, co je relevantní.** Pravidla jsou ve vrstvách: sdílená pro celou složku, užší pro projekt. Co k zadání nepatří, zůstává stranou, i když je ve složce.
+Pamatovat si Claude umí. Horší je to s pořádkem: pravda o projektu je rozházená po dokumentech, chatech a hlavách a v každé nové konverzaci se skládá znovu. Řešení je jedna složka, kde to všechno bydlí, a pár pravidel, která říkají, co se k jakému zadání načte a co zůstane stranou. Na rozvrh se nenačítá spisovka. Do zprávy pro kolegu se načte váš tón.
 
 ## Tři vrstvy
 
