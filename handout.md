@@ -1,4 +1,4 @@
-# Pracovní kontext na jednom místě
+# Scio OS: Tvůj pracovní kontext na jednom místě
 
 Claude si pamatovat umí. Co mu chybí, je pořádek: kde je pravda o kterém projektu, co platí vždycky a co se minulý týden změnilo. Řešení je jedna složka, kde to všechno je, a pár pravidel, která říkají, co se kdy načte. Do práce na rozvrhu se nenačítá spisovka. Do textu pro kolegu se načte váš tón.
 

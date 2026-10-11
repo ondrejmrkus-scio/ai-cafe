@@ -1,4 +1,4 @@
-# Pracovní kontext na jednom místě
+# Scio OS: Tvůj pracovní kontext na jednom místě
 
 Materiály z AI café ve Scio (12. 10. 2026): jak si postavit složku, ve které Claude ví, kam jít pro kontext každého projektu, a načítá jen to, co je pro zadání potřeba.
 
