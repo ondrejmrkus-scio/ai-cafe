@@ -129,7 +129,7 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
     <div class="card rules">
       <code>CLAUDE.md</code>
       <h3>Pravidla</h3>
-      <p>Kdo jste, jazyk, tón, co dělat vždy a co nikdy, a mapa zdrojů. Načítá se samo na začátku každé konverzace.</p>
+      <p>Kdo jsi, jazyk, tón, co dělat vždy a co nikdy, a mapa zdrojů. Načítá se samo na začátku každé konverzace.</p>
       <span class="tag">„vždy", „nikdy", „před X udělej Y"</span>
     </div>
     <div class="card facts">
@@ -148,7 +148,7 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
   <div class="tests">
     <div class="test"><span>Předepisuje to chování?</span><span class="answer rules">→ CLAUDE.md</span></div>
     <div class="test"><span>Je to fakt o světě, který se může změnit?</span><span class="answer facts">→ MEMORY.md</span></div>
-    <div class="test"><span>Je to dokument, ke kterému se vracíte?</span><span class="answer sources">→ 00_Resources/ a řádek v tabulce</span></div>
+    <div class="test"><span>Je to dokument, ke kterému se vracíš?</span><span class="answer sources">→ 00_Resources/ a řádek v tabulce</span></div>
   </div>
 </section>
 
@@ -184,11 +184,11 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
 <section id="kroky">
   <h2>Tři kroky na dnešní odpoledne</h2>
   <ol class="steps">
-    <li><h3>Složka a pět řádků pravidel</h3><p>Založte složku a v ní <code>CLAUDE.md</code>: kdo jste, jazyk, tón, dvě věci, které nechcete. Víc ne. Pravidla přibývají s prací, ne předem.</p></li>
-    <li><h3>Prázdná paměť a jedno pravidlo k ní</h3><p><code>MEMORY.md</code> s nadpisy Lidé, Stav projektů, Rozhodnutí. Do pravidel přidejte: „Na začátku si přečti MEMORY.md. Když řeknu zapamatuj si, zapiš to tam hned."</p></li>
-    <li><h3>Tři dokumenty, ke kterým se vracíte, a mapa k nim</h3><p>Do složky <code>00_Resources/</code> a do tabulky v pravidlech s poznámkou, kdy který číst. Tahle tabulka je to, díky čemu Claude ví, kam jít.</p></li>
+    <li><h3>Složka a pět řádků pravidel</h3><p>Založ složku a v ní <code>CLAUDE.md</code>: kdo jsi, jazyk, tón, dvě věci, které nechceš. Víc ne. Pravidla přibývají s prací, ne předem.</p></li>
+    <li><h3>Prázdná paměť a jedno pravidlo k ní</h3><p><code>MEMORY.md</code> s nadpisy Lidé, Stav projektů, Rozhodnutí. Do pravidel přidej: „Na začátku si přečti MEMORY.md. Když řeknu zapamatuj si, zapiš to tam hned."</p></li>
+    <li><h3>Tři dokumenty, ke kterým se vracíš, a mapa k nim</h3><p>Do složky <code>00_Resources/</code> a do tabulky v pravidlech s poznámkou, kdy který číst. Tahle tabulka je to, díky čemu Claude ví, kam jít.</p></li>
   </ol>
-  <p class="steps-after">Pak to vyzkoušejte. Zeptejte se na něco, co je v paměti. Řekněte „zapamatuj si, že…" a podívejte se do souboru. Až přibude druhý projekt, dejte mu podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>.</p>
+  <p class="steps-after">Pak to vyzkoušej. Zeptej se na něco, co je v paměti. Řekni „zapamatuj si, že…" a podívej se do souboru. Až přibude druhý projekt, dej mu podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>.</p>
 </section>
 
 <section id="sablona">
@@ -201,7 +201,7 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
     </a>
     <a class="dl" href="https://github.com/ondrejmrkus-scio/ai-cafe/tree/main/sablona-vaultu">
       <span class="what">Prohlédnout soubory na GitHubu</span>
-      <span class="how">Když chcete nejdřív vidět, co v šabloně je, bez stahování.</span>
+      <span class="how">Když chceš nejdřív vidět, co v šabloně je, bez stahování.</span>
       <span class="url">github.com/ondrejmrkus-scio/ai-cafe</span>
     </a>
   </div>
@@ -211,18 +211,14 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
   <h2>Až to poroste</h2>
   <ul class="plain">
     <li><b>Víc projektů v jedné složce.</b> Když projekty sdílí lidi a kontext, každý dostane podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>. Načítají se obě úrovně, nadřazená první. Projekt pravidla zužuje, kde mlčí, platí sdílená.</li>
-    <li><b>Řekněte, co nečíst.</b> Stejně důležité jako mapa zdrojů je pravidlo, co zůstává stranou: přepisy, staré verze, cizí rozpracovaná práce. Jinak se do každé konverzace načte všechno.</li>
+    <li><b>Řekni, co nečíst.</b> Stejně důležité jako mapa zdrojů je pravidlo, co zůstává stranou: přepisy, staré verze, cizí rozpracovaná práce. Jinak se do každé konverzace načte všechno.</li>
     <li><b>Paměť neduplikuje zdroje.</b> Když je pravda v dokumentu nebo v repu, paměť drží jen odkaz a důvod, proč rozhodnutí padlo. Jinak se za měsíc rozejdou.</li>
-    <li><b>Verzujte to gitem.</b> Paměť se dá vrátit, když Claude zapíše něco špatně, a vidíte, co se kdy změnilo.</li>
+    <li><b>Verzuj to gitem.</b> Paměť se dá vrátit, když Claude zapíše něco špatně, a vidíte, co se kdy změnilo.</li>
     <li><b>Osobní věci zvlášť.</b> Pracovní složka je pro práci. Soukromé věci patří do jiné složky, ke které pracovní Claude nemá přístup.</li>
-    <li><b>Automatizace až nakonec.</b> Agenti, skills a workflows dávají smysl, až když základ nějakou dobu žije a víte, co se opakuje.</li>
+    <li><b>Automatizace až nakonec.</b> Agenti, skills a workflows dávají smysl, až když základ nějakou dobu žije a víš, co se opakuje.</li>
   </ul>
 </section>
 
-<section id="bez-claude-code">
-  <h2>Bez Claude Code</h2>
-  <p>V claude.ai založte Projekt. Do instrukcí projektu vložte obsah <code>CLAUDE.md</code>, do znalostí projektu nahrajte <code>MEMORY.md</code> a dokumenty ze zdrojů. Paměť se v téhle variantě neaktualizuje sama: když padne něco k zapamatování, soubor přepište a nahrajte znovu. Vrstvení podle projektů tu nahradí víc Projektů se společnou částí instrukcí.</p>
-</section>
 
 <section id="dal-cist">
   <h2>Kde číst dál</h2>
