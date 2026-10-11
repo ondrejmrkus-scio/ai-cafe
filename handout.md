@@ -2,6 +2,8 @@
 
 Pamatovat si Claude umí. Horší je to s pořádkem: to, co o projektu platí, je rozházené po dokumentech, chatech a hlavách a v každé nové konverzaci se skládá znovu. Řešení je jedna složka, kde to všechno je, a pár pravidel o tom, co se k jakému zadání načte a co zůstane stranou.
 
+**Co potřebuješ:** desktop aplikaci Claude nebo Claude Code a složku na disku. Programovat nemusíš, terminál nepotřebuješ.
+
 ## Tři vrstvy
 
 | Soubor | Co v něm je | Jak se pozná |
