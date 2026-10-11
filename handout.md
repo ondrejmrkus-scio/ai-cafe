@@ -30,4 +30,4 @@ V claude.ai založte Projekt. Instrukce projektu = obsah `CLAUDE.md`. Znalosti p
 
 ## Šablona ke stažení
 
-[odkaz doplnit před akcí] · složka s vyplněnými ukázkami všech tří souborů a návodem v `README.md`
+https://ondrejmrkus-scio.github.io/ai-cafe/ · stránka s postupem, šablonou (zip) a tímhle handoutem
