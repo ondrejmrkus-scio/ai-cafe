@@ -9,13 +9,13 @@ Pamatovat si Claude umí. Horší je to s pořádkem: to, co o projektu platí, 
 | Soubor | Co v něm je | Jak se pozná |
 | --- | --- | --- |
 | `CLAUDE.md` | **Pravidla.** Kdo jsi, jakým jazykem a tónem chceš psát, co dělat vždy a co nikdy. A mapa zdrojů: který dokument číst a kdy. Načítá se automaticky. | „vždy", „nikdy", „před X udělej Y" |
-| `MEMORY.md` | **Fakta.** Lidé, stav projektů, rozhodnutí a proč padla. Claude ji přečte na začátku a zapíše do ní, když řekneš „zapamatuj si". | fakt, který se může změnit |
+| `MEMORY.md` | **Fakta.** Lidé, stav projektů, rozhodnutí a proč padla. Pravidla ji vkládají do kontextu od první zprávy a Claude do ní zapíše, když řekneš „zapamatuj si". | fakt, který se může změnit |
 | `00_Resources/` | **Zdroje.** Dokumenty, které Claude otevře, až když je potřebuje. Který a kdy, to říká tabulka v pravidlech. | všechno ostatní |
 
 ## Tři kroky na dnešní odpoledne
 
 1. **Složka a pět řádků pravidel.** Založ složku a v ní `CLAUDE.md`. Napiš do něj, kdo jsi, jakým jazykem a tónem chceš psát a dvě věci, které nechceš. Víc ne. Další pravidla přidávej, až když ti budou chybět.
-2. **Prázdná paměť a jedno pravidlo k ní.** Vytvoř `MEMORY.md` s nadpisy Lidé, Stav projektů a Rozhodnutí. Do `CLAUDE.md` přidej pravidlo: „Na začátku si přečti MEMORY.md. Když řeknu zapamatuj si, zapiš to tam hned."
+2. **Prázdná paměť a jedno pravidlo k ní.** Vytvoř `MEMORY.md` s nadpisy Lidé, Stav projektů a Rozhodnutí. Do `CLAUDE.md` přidej řádek `@MEMORY.md`, tím se paměť načte od první zprávy, a pravidlo: „Když řeknu zapamatuj si, zapiš to do MEMORY.md hned."
 3. **Tři dokumenty, ke kterým se vracíš, a mapa k nim.** Dej je do `00_Resources/` a do `CLAUDE.md` přidej tabulku: který dokument a kdy ho číst. Díky téhle tabulce Claude ví, kam jít.
 
 Pak to vyzkoušej: zeptej se na něco, co je v paměti, řekni „zapamatuj si, že…" a podívej se, co se do souboru zapsalo. Až přibude druhý projekt, dej mu podsložku s vlastním `CLAUDE.md` a `MEMORY.md`.

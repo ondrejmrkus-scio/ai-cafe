@@ -133,7 +133,7 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
     <div class="card facts">
       <code>MEMORY.md</code>
       <h3>Fakta</h3>
-      <p>Lidé, stav projektů, rozhodnutí a proč padla. Claude ji přečte na začátku konverzace a zapíše do ní, když řekneš „zapamatuj si".</p>
+      <p>Lidé, stav projektů, rozhodnutí a proč padla. Pravidla ji vkládají do kontextu od první zprávy a Claude do ní zapíše, když řekneš „zapamatuj si".</p>
       <span class="tag">fakt, který se může změnit</span>
     </div>
     <div class="card sources">
@@ -183,7 +183,7 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
   <h2>Tři kroky na dnešní odpoledne</h2>
   <ol class="steps">
     <li><h3>Složka a pět řádků pravidel</h3><p>Založ složku a v ní soubor <code>CLAUDE.md</code>. Napiš do něj, kdo jsi, jakým jazykem a tónem chceš psát a dvě věci, které nechceš. Víc ne. Další pravidla přidávej, až když ti budou chybět.</p></li>
-    <li><h3>Prázdná paměť a jedno pravidlo k ní</h3><p>Vytvoř <code>MEMORY.md</code> s nadpisy Lidé, Stav projektů a Rozhodnutí. Do <code>CLAUDE.md</code> přidej pravidlo: „Na začátku si přečti MEMORY.md. Když řeknu zapamatuj si, zapiš to tam hned."</p></li>
+    <li><h3>Prázdná paměť a jedno pravidlo k ní</h3><p>Vytvoř <code>MEMORY.md</code> s nadpisy Lidé, Stav projektů a Rozhodnutí. Do <code>CLAUDE.md</code> přidej řádek <code>@MEMORY.md</code>, tím se paměť načte od první zprávy, a pravidlo: „Když řeknu zapamatuj si, zapiš to do MEMORY.md hned."</p></li>
     <li><h3>Tři dokumenty, ke kterým se vracíš, a mapa k nim</h3><p>Dej je do složky <code>00_Resources/</code> a do <code>CLAUDE.md</code> přidej tabulku: který dokument a kdy ho číst. Díky téhle tabulce Claude ví, kam jít.</p></li>
   </ol>
   <p class="steps-after">Pak to vyzkoušej: zeptej se na něco, co je v paměti, řekni „zapamatuj si, že…" a podívej se, co se do souboru zapsalo. Až přibude druhý projekt, dej mu podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>.</p>

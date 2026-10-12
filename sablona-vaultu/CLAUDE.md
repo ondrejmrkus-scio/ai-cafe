@@ -4,7 +4,9 @@ Tohle je pracovní složka [tvoje jméno], [role] ve Scio. Patří sem práce na
 
 ## Memory System
 
-Na začátku každé konverzace si přečti MEMORY.md a pracuj s tím, co v ní je. Neoznamuj, co jsi tam našel. Prostě to věz.
+MEMORY.md je importovaná řádkem níže, takže je v kontextu od první zprávy a nemusíš ji číst. Pracuj s tím, co v ní je. Neoznamuj, co jsi tam našel. Prostě to věz.
+
+@MEMORY.md
 
 Když řeknu „zapamatuj si", zapiš to do MEMORY.md hned a potvrď mi to. Jinak do MEMORY.md nezapisuj, dokud se nezeptáš.
 

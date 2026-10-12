@@ -1,6 +1,8 @@
 ## Identity
 
-[Název projektu]: jedna věta o tom, co to je. Sem patří: [co]. Sem nepatří: [co].
+[Název projektu]: jedna věta o tom, co to je. Sem patří: [co]. Sem nepatří: [co]. Paměť projektu je importovaná níže.
+
+@MEMORY.md
 
 ## Resources
 

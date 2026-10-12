@@ -3,7 +3,7 @@
 Tohle je složka, kterou otevřeš v Claude Code (nebo v desktop aplikaci Claude jako projekt). Claude v ní ví, kam jít pro kontext, a načítá jen to, co je pro zadání potřeba. Drží to tři vrstvy:
 
 - `CLAUDE.md`: pravidla, jak se má Claude chovat. Načítají se automaticky na začátku každé konverzace.
-- `MEMORY.md`: fakta, která se můžou změnit. Claude ji přečte na začátku a zapíše do ní, když řekneš „zapamatuj si".
+- `MEMORY.md`: fakta, která se můžou změnit. `CLAUDE.md` ji řádkem `@MEMORY.md` vkládá do kontextu od první zprávy a Claude do ní zapíše, když řekneš „zapamatuj si".
 - `00_Resources/`: dokumenty, které Claude otevře, až když je potřebuje. Který a kdy, to říká tabulka v `CLAUDE.md`.
 
 ## Jak začít (asi hodina)
