@@ -117,7 +117,7 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
   <p class="eyebrow">AI café · Scio · 12. 10. 2026</p>
   <h1>Scio OS: Tvůj pracovní kontext na jednom místě</h1>
   <p class="lede">Pamatovat si Claude umí. Horší je to s pořádkem: to, co o projektu platí, je rozházené po dokumentech, chatech a hlavách a v každé nové konverzaci se skládá znovu. <b>Scio OS je jedna složka, kde to všechno je, a pár pravidel o tom, co se k jakému zadání načte a co zůstane stranou.</b></p>
-  <p class="need"><b>Co potřebuješ:</b><span>desktop aplikaci Claude nebo <a href="https://docs.claude.com/en/docs/claude-code/overview">Claude Code</a>, a složku na disku. Programovat nemusíš, terminál nepotřebuješ.</span></p>
+  <p class="need"><b>Co potřebuješ:</b><span>desktop aplikaci Claude nebo <a href="https://docs.claude.com/en/docs/claude-code/overview">Claude Code</a>, a složku na disku. Programovat nemusíš, terminál nepotřebuješ. Soubory jsou obyčejný text, na jejich psaní a čtení se hodí <a href="https://obsidian.md">Obsidian</a>, ale stačí jakýkoliv textový editor.</span></p>
 </header>
 
 <section id="vrstvy">
@@ -157,12 +157,12 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
     <div class="legend"><span class="r">pravidla</span><span class="f">fakta</span><span class="s">zdroje</span><span class="c">kód</span><span class="a">automatizace</span></div>
     <div class="tree" aria-label="Strom složky Scio OS">
       <div><span class="n">Scio OS/</span><span class="k">jedna složka, otevřená v Obsidianu i v Claude Code, verzovaná gitem</span></div>
-      <div class="d1"><span class="n r">CLAUDE.md</span><span class="k">pravidla pro celou složku, 90 řádků</span></div>
-      <div class="d1"><span class="n f">MEMORY.md</span><span class="k">lidé a rozhodnutí, 10 řádků</span></div>
-      <div class="d1"><span class="n s">00_Resources/</span><span class="k">voice-principles.md, skripty</span></div>
+      <div class="d1"><span class="n r">CLAUDE.md</span><span class="k">pravidla pro celou složku a mapa projektů, 75 řádků</span></div>
+      <div class="d1"><span class="n f">MEMORY.md</span><span class="k">prostředí, kontakty, klíčová rozhodnutí, 20 řádků</span></div>
+      <div class="d1"><span class="n s">00_Resources/</span><span class="k">voice-principles.md, šablona projektu, skripty</span></div>
       <div class="d1"><span class="n">SIS/</span><span class="k">projekt: školní informační systém</span></div>
-      <div class="d2"><span class="n r">CLAUDE.md</span><span class="k">pravidla jen pro SIS: pojmy, postup práce, ověření UI, co nečíst</span></div>
-      <div class="d2"><span class="n f">MEMORY.md</span><span class="k">proč rozhodnutí padla a co jsme zamítli</span></div>
+      <div class="d2"><span class="n r">CLAUDE.md</span><span class="k">pravidla jen pro SIS: zdroje, pojmy, ověření UI, co nečíst</span></div>
+      <div class="d2"><span class="n f">MEMORY.md</span><span class="k">stav k datu, proč rozhodnutí padla, co jsme zamítli</span></div>
       <div class="d2"><span class="n s">SIS Resources/</span><span class="k">discovery, prototyp, rozvrhy, texty PR</span></div>
       <div class="d1"><span class="n">Spisovka/</span><span class="k">projekt: stejná trojice souborů, teď pozastavený</span></div>
       <div class="d1"><span class="n c">_repo/</span><span class="k">klon týmového repa: kód a specifikace, zdroj pravdy</span></div>
@@ -173,7 +173,7 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
     </div>
   </div>
   <div class="points">
-    <div class="point"><b>Projekty dědí.</b><span>Načítají se obě úrovně pravidel, sdílená první. Projektová pravidla upřesňují sdílená. Kde projekt nic neříká, platí sdílené.</span></div>
+    <div class="point"><b>Projekty dědí.</b><span>Kořenová pravidla mají mapu: která slova a témata vedou do kterého projektu. Načítají se obě úrovně, projektová pravidla upřesňují sdílená.</span></div>
     <div class="point"><b>Paměť nic neopisuje.</b><span>Specifikace je v repu, zjištění ze škol v syntéze rozhovorů. Paměť drží jen to, proč rozhodnutí padlo.</span></div>
     <div class="point"><b>Automatizace až nakonec.</b><span>Agenti a pipeline přibyli, až když základ nějakou dobu fungoval a bylo jasné, co se opakuje.</span></div>
   </div>
@@ -186,7 +186,7 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
     <li><h3>Prázdná paměť a jedno pravidlo k ní</h3><p>Vytvoř <code>MEMORY.md</code> s nadpisy Lidé, Stav projektů a Rozhodnutí. Do <code>CLAUDE.md</code> přidej řádek <code>@MEMORY.md</code>, tím se paměť načte od první zprávy, a pravidlo: „Když řeknu zapamatuj si, zapiš to do MEMORY.md hned."</p></li>
     <li><h3>Tři dokumenty, ke kterým se vracíš, a mapa k nim</h3><p>Dej je do složky <code>00_Resources/</code> a do <code>CLAUDE.md</code> přidej tabulku: který dokument a kdy ho číst. Díky téhle tabulce Claude ví, kam jít.</p></li>
   </ol>
-  <p class="steps-after">Pak to vyzkoušej: zeptej se na něco, co je v paměti, řekni „zapamatuj si, že…" a podívej se, co se do souboru zapsalo. Až přibude druhý projekt, dej mu podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code>.</p>
+  <p class="steps-after">Pak to vyzkoušej: zeptej se na něco, co je v paměti, řekni „zapamatuj si, že…" a podívej se, co se do souboru zapsalo. Až přibude druhý projekt, dej mu podsložku s vlastním <code>CLAUDE.md</code> a <code>MEMORY.md</code> a do kořenového <code>CLAUDE.md</code> řádek do mapy projektů: o čem je a která témata do něj vedou.</p>
 </section>
 
 <section id="sablona">
@@ -222,6 +222,7 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; color: var(--mute
   <ul class="plain">
     <li><a href="https://docs.claude.com/en/docs/claude-code/memory">Dokumentace Claude Code: jak funguje CLAUDE.md a paměť</a></li>
     <li><a href="https://docs.claude.com/en/docs/claude-code/overview">Claude Code: přehled a instalace</a></li>
+    <li><a href="https://obsidian.md">Obsidian: editor na textové (markdown) soubory, ve kterém mám složku otevřenou vedle Claude Code</a></li>
   </ul>
 </section>
 

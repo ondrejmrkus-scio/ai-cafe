@@ -1,43 +1,52 @@
-## Identity
+## Co je tohle
 
-Tohle je pracovní složka [tvoje jméno], [role] ve Scio. Patří sem práce na [oblast, například: produktová příprava, metodika, marketing]. Osobní věci sem nepatří. Když se ukáže, že úkol je osobní, řekni to a zastav se.
+Pracovní složka [tvoje jméno]. Domov pro projekty kolem [oblast, například: metodika, marketing, produkt], které sdílí kontext, lidi a rozhodnutí. Každý projekt má vlastní podsložku tady, ne vlastní složku jinde, aby kontext zůstal sdílený. Osobní věci sem nepatří. Když se ukáže, že úkol je osobní, řekni to a zastav se.
 
-## Memory System
+## Kdo jsem
 
-MEMORY.md je importovaná řádkem níže, takže je v kontextu od první zprávy a nemusíš ji číst. Pracuj s tím, co v ní je. Neoznamuj, co jsi tam našel. Prostě to věz.
+[Jméno], [role] ve Scio. [Dvě věty o tom, co děláš a s čím ti má Claude pomáhat.] Oslovuj mě [jméno].
+
+## Projekty
+
+Každý projekt má vlastní CLAUDE.md, MEMORY.md a složku Resources. Tenhle soubor dává společná pravidla, projekt je zužuje a při rozporu vyhrává. **Na začátku úkolu najdi řádek v mapě a přečti `<projekt>/MEMORY.md`.** Tím se načte i `<projekt>/CLAUDE.md`. Stav a termíny projektu jsou v jeho MEMORY.md, ne tady.
+
+| Projekt | O čem | Sem, když... |
+| ------- | ----- | ------------ |
+| Projekt-ukazka | [Jedna věta. Případně příznak priorita nebo pozastaveno.] | Zmíním [slova a témata, která úkol směrují do tohohle projektu]. |
+
+### Když mapa nerozhodne
+
+Nic nesedí: nevybírej nejbližší řádek. Pracuj z tohohle souboru, řekni, který projekt jsi zvažoval a proč jsi ho zamítl, a zeptej se. Špatný projekt je horší než žádný, protože natáhne pravidla, která neplatí.
+
+## Jazyk a styl
+
+- Piš česky, pokud neřeknu jinak.
+- [Tón, například: profesionálně, ale uvolněně, jako kolega kolegovi. Když to zní jako firemní memo, přepiš to.]
+- Stručně, do 300 slov, pokud nechci víc.
+- Seznamy v odrážkách, vysvětlení v odstavcích.
+- Jedno silné doporučení. Varianty jen když si o ně řeknu.
+- [Jedna věc, kterou nesnášíš, například: žádná dlouhá pomlčka.]
+
+## Pravidla
+
+- Před složitějším úkolem se nejdřív doptej.
+- Když si nejsi jistý, řekni to. Nehádej.
+- Než napíšeš text mým jménem, přečti si `00_Resources/voice-principles.md`.
+- Před mazáním vypiš, co se smaže, a počkej na potvrzení. Smaž jen potvrzené.
+
+## Paměť
+
+MEMORY.md je importovaná níže. Řiď se jí, ale neoznamuj to.
 
 @MEMORY.md
 
-Když řeknu „zapamatuj si", zapiš to do MEMORY.md hned a potvrď mi to. Jinak do MEMORY.md nezapisuj, dokud se nezeptáš.
+Když řeknu „zapamatuj si", zapiš to do MEMORY.md hned a potvrď mi to. Jinak do MEMORY.md nepiš bez dotazu, ani malé nebo zjevně užitečné věci.
 
-Kam co patří: když něco předepisuje chování („vždy", „nikdy", „před X udělej Y"), patří to sem do CLAUDE.md. Když je to fakt, který se může změnit (kontakt, stav projektu, rozhodnutí), patří to do MEMORY.md. Když si nejsi jistý, navrhni, kam to dát, a zeptej se.
+Kam co patří: chování („vždy", „nikdy", „před X udělej Y") do CLAUDE.md, proměnlivé fakty (kontakty, stav, rozhodnutí) do MEMORY.md. Když nevíš, navrhni soubor a zeptej se.
 
-## Preferences
+## Zdroje
 
-- Piš česky, pokud neřeknu jinak.
-- Tón: [například: profesionální, ale konverzační. Když to zní jako firemní memo, přepiš to.]
-- Buď stručný. Odpovědi do 300 slov, pokud nechci víc.
-- Dej mi jedno silné doporučení, ne tři možnosti.
-- [Jedna věc, kterou nesnášíš, například: nikdy nepoužívej dlouhou pomlčku.]
-
-## Rules
-
-- U složitějšího úkolu se nejdřív zeptej na to, co nevíš. Nehádej.
-- Když si něčím nejsi jistý, řekni to.
-- Než za mě napíšeš jakýkoliv text, přečti si 00_Resources/voice-principles.md.
-- Před mazáním souborů vypiš, co smažeš, a počkej na moje potvrzení.
-
-## Resources
-
-| Zdroj | Čti, když… |
-| ----- | ---------- |
-| `00_Resources/voice-principles.md` | píšeš jakýkoliv text za mě |
-| `00_Resources/[dokument].md` | [kdy je potřeba] |
-
-## Projects
-
-Podsložky s vlastním CLAUDE.md a MEMORY.md. Načítají se obě úrovně, tahle první. Kde si odporují, platí projekt. Kde projekt nic neříká, platí tohle.
-
-| Projekt | O čem |
-| ------- | ----- |
-| Projekt-ukazka | Ukázková podsložka. Přejmenuj ji nebo smaž. |
+| Zdroj | Přečti, když... |
+| ----- | --------------- |
+| `00_Resources/voice-principles.md` | Píšeš text mým jménem. |
+| `00_Resources/[dokument].md` | [Kdy je potřeba.] |

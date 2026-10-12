@@ -2,7 +2,7 @@
 
 Pamatovat si Claude umí. Horší je to s pořádkem: to, co o projektu platí, je rozházené po dokumentech, chatech a hlavách a v každé nové konverzaci se skládá znovu. Řešení je jedna složka, kde to všechno je, a pár pravidel o tom, co se k jakému zadání načte a co zůstane stranou.
 
-**Co potřebuješ:** desktop aplikaci Claude nebo Claude Code a složku na disku. Programovat nemusíš, terminál nepotřebuješ.
+**Co potřebuješ:** desktop aplikaci Claude nebo Claude Code a složku na disku. Programovat nemusíš, terminál nepotřebuješ. Soubory jsou obyčejný text, na psaní se hodí Obsidian (obsidian.md), ale stačí jakýkoliv editor.
 
 ## Tři vrstvy
 
@@ -18,7 +18,7 @@ Pamatovat si Claude umí. Horší je to s pořádkem: to, co o projektu platí, 
 2. **Prázdná paměť a jedno pravidlo k ní.** Vytvoř `MEMORY.md` s nadpisy Lidé, Stav projektů a Rozhodnutí. Do `CLAUDE.md` přidej řádek `@MEMORY.md`, tím se paměť načte od první zprávy, a pravidlo: „Když řeknu zapamatuj si, zapiš to do MEMORY.md hned."
 3. **Tři dokumenty, ke kterým se vracíš, a mapa k nim.** Dej je do `00_Resources/` a do `CLAUDE.md` přidej tabulku: který dokument a kdy ho číst. Díky téhle tabulce Claude ví, kam jít.
 
-Pak to vyzkoušej: zeptej se na něco, co je v paměti, řekni „zapamatuj si, že…" a podívej se, co se do souboru zapsalo. Až přibude druhý projekt, dej mu podsložku s vlastním `CLAUDE.md` a `MEMORY.md`.
+Pak to vyzkoušej: zeptej se na něco, co je v paměti, řekni „zapamatuj si, že…" a podívej se, co se do souboru zapsalo. Až přibude druhý projekt, dej mu podsložku s vlastním `CLAUDE.md` a `MEMORY.md` a do kořenového `CLAUDE.md` řádek do mapy projektů: o čem je a která témata do něj vedou.
 
 ## Až to poroste
 

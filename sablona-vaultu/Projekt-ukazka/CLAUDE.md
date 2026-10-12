@@ -1,22 +1,22 @@
-## Identity
+## Co je tohle
 
-[Název projektu]: jedna věta o tom, co to je. Sem patří: [co]. Sem nepatří: [co]. Paměť projektu je importovaná níže.
+[Název projektu]: jedna věta o tom, co to je. Sem patří: [co]. Sem nepatří: [co]. Termíny a stav drží MEMORY.md níže.
 
 @MEMORY.md
 
-## Resources
+## Zdroje
 
-| Zdroj | Čti, když… |
-| ----- | ---------- |
-| `Resources/[dokument].md` | [kdy] |
+| Zdroj | Přečti, když... |
+| ----- | --------------- |
+| `Resources/[dokument].md` | [Kdy.] |
 
 ## Workflow
 
 1. [První krok hlavního úkolu v tomhle projektu.]
 2. [Druhý krok.]
 
-## Editorial Rules
+## Texty
 
-Platí 00_Resources/voice-principles.md z nadřazené složky. Navíc:
+Platí `00_Resources/voice-principles.md` a „Jazyk a styl" z kořenového `CLAUDE.md`. Navíc:
 
-- [pravidlo jen pro tenhle projekt]
+- [Pravidlo psaní jen pro tenhle projekt.]

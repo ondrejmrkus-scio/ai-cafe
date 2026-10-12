@@ -1,13 +1,13 @@
 # Paměť
 
-## Lidé
+## Pracovní prostředí
 
-- [Jméno]: [role a co s ním řešíte]
+- [Například: pracuju na MacBooku, používám Google Workspace, Claude Code v desktop aplikaci.]
 
-## Stav projektů
+## Kontakty
 
-- [Projekt]: [kde to je, k jakému datu]
+- **[Jméno]**: [role a co spolu řešíte]
 
-## Rozhodnutí a proč padla
+## Klíčová rozhodnutí
 
-- [Rozhodnutí], [datum]: [důvod, co jsme zamítli]
+- **[Rozhodnutí], [datum].** [Důvod a co jsme zamítli.]
