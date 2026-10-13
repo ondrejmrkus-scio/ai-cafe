@@ -30,4 +30,6 @@ Pak to vyzkoušej: zeptej se na něco, co je v paměti, řekni „zapamatuj si, 
 
 ## Všechno na jedné stránce
 
+Záznam bloku z AI café (jen pro Scio, po přihlášení): https://drive.google.com/file/d/1ccCwvlBeVjrJ567OHtHs8tPor2Q4B4dI/view
+
 https://ondrejmrkus-scio.github.io/ai-cafe/ · postup, strom skutečné složky, šablona ke stažení (zip) a tenhle handout
